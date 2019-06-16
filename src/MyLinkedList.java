@@ -65,6 +65,52 @@ public class MyLinkedList<E> {
         str = str + "]";
         return str;
     }
+
+    public void reverseList() {
+        MyNode temp = null;
+        MyNode newHead = null;
+        while (head != null) {
+            temp=head;
+            head = head.next;
+            temp.next = newHead;
+            newHead=temp;
+        }
+        head = newHead;
+    }
+
+    public boolean isLoopPresent()
+    {
+        MyNode temp1=head;
+        MyNode temp2=head;
+        do
+        {
+            if(temp1 != null)
+            {
+                temp1 = temp1.next;
+            }
+            else
+            {
+                return false;
+            }
+            if(temp2 != null)
+            {
+                temp2 = temp2.next;
+                if(temp2!=null)
+                {
+                    temp2=temp2.next;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+        }while(temp1 != temp2);
+        return true;
+    }
 }
 
 class MyNode<E> {
